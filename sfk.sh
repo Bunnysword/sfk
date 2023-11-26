@@ -22,7 +22,7 @@ echo -e "\tDiscord" && sudo dnf config-manager --add-repo https://terra.fyralabs
 echo -e "\tYandex Browser" && sudo rpmkeys --import https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG
 sudo dnf config-manager --add-repo http://repo.yandex.ru/yandex-browser/rpm/stable/x86_64 -y && sudo dnf install yandex-browser-stable
 #Install_Apps
-echo -e "\tInstall Apps" && sudo dnf in mangohud timeshift goverlay steam lutris transmission kdenlive vlc gnome-tweaks htop redhat-lsb-core rocm-opencl inxi neofetch protontricks openssl discord noisetorch easyeffects corectrl --allowerasing
+echo -e "\tInstall Apps" && sudo dnf in mangohud timeshift goverlay steam lutris transmission kdenlive vlc htop redhat-lsb-core rocm-opencl inxi neofetch protontricks openssl discord noisetorch easyeffects corectrl --allowerasing
 sudo dnf update --refresh
 #Flatpak
 echo -e "\tFlatpak" && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub com.heroicgameslauncher.hgl com.obsproject.Studio
