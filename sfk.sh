@@ -14,6 +14,7 @@ echo -e "\tcodecs" && sudo dnf in gstreamer1-plugins-{bad-\*,good-\*,base} gstre
 sudo dnf in lame\* --exclude=lame-devel && sudo dnf group upgrade Multimedia --with-optional --allowerasing
 #Kernel_Fsync
 echo -e "\tKernel Fsync" && sudo dnf copr enable sentry/kernel-fsync
+sudo grubby --args="gpu_sched.sched_policy=0" --update-kernel=ALL
 #NoiseTorch
 echo -e "\tNoiseTorch" && sudo dnf copr enable principis/NoiseTorch
 #Discord
