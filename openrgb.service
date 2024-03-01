@@ -1,0 +1,10 @@
+
+[Unit]
+Description=OpenRGB Profile Loader
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/openrgb -p /home/bunnysword/.config/OpenRGB/1.orp
+
+[Install]
+WantedBy=default.target
