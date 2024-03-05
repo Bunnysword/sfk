@@ -25,8 +25,9 @@ sudo dnf update --refresh
 #Flatpak
 echo -e "\tFlatpak" && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub com.heroicgameslauncher.hgl com.obsproject.Studio
 #Fix_rgb_logitech_g213
+mkdir /home/bunnysword/.config/OpenRGB
 cp 1.orp /home/bunnysword/.config/OpenRGB/
-systemctl --user enable --now openrgb.service
+#systemctl --user enable --now openrgb.service
 
 #Disable_Services
 echo -e "\tOFF_Services"
