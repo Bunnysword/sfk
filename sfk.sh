@@ -32,6 +32,8 @@ systemctl disable livesys.service
 systemctl disable rpcbind.service
 systemctl disable lvm2-monitor.service
 systemctl disable NetworkManager-wait-online.service
+#corectrl
+sudo cp 90-corectrl.rules /etc/polkit-1/rules.d/
 #Fix_Suspend_for_Gigabyte_Aorus_Elite_v2_B550
 echo -e "Fix Suspend for Gigabyte Aorus Elite v2 B550"
 sudo cp wakeup-disable_GPP0.service /etc/systemd/system/
