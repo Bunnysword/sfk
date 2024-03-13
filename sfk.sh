@@ -12,11 +12,8 @@ echo -e "\trm stock apps" && sudo dnf rm mediawriter rhythmbox evince yelp totem
 #codecs
 echo -e "\tcodecs" && sudo dnf in gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 sudo dnf in lame\* --exclude=lame-devel && sudo dnf group upgrade Multimedia --with-optional --allowerasing
-#Kernel_Fsync
 echo -e "\tKernel Fsync" && sudo dnf copr enable sentry/kernel-fsync
-#NoiseTorch
 echo -e "\tNoiseTorch" && sudo dnf copr enable principis/NoiseTorch
-#Discord
 echo -e "\tDiscord" && sudo dnf config-manager --add-repo https://terra.fyralabs.com/terra.repo
 #Install_Apps
 sudo dnf config-manager --set-enabled google-chrome
@@ -32,12 +29,10 @@ systemctl disable livesys.service
 systemctl disable rpcbind.service
 systemctl disable lvm2-monitor.service
 systemctl disable NetworkManager-wait-online.service
+#Fix_Suspend_for_Gigabyte_Aorus_Elite_v2_B550
+echo -e "Fix Suspend for Gigabyte Aorus Elite v2 B550" && sudo cp wakeup-disable_GPP0.service /etc/systemd/system/ && sudo systemctl enable wakeup-disable_GPP0.service && sudo systemctl start wakeup-disable_GPP0.service
 #corectrl
 sudo cp 90-corectrl.rules /etc/polkit-1/rules.d/
-#Fix_Suspend_for_Gigabyte_Aorus_Elite_v2_B550
-echo -e "Fix Suspend for Gigabyte Aorus Elite v2 B550"
-sudo cp wakeup-disable_GPP0.service /etc/systemd/system/
-sudo systemctl enable wakeup-disable_GPP0.service && sudo systemctl start wakeup-disable_GPP0.service
 #Fix_rgb_logitech_g213
 mkdir /home/bunnysword/.config/OpenRGB && cp 1.orp /home/bunnysword/.config/OpenRGB/
 #mkdir -p /home/bunnysword/.config/systemd/user/ && cp openrgb.service /home/bunnysword/.config/systemd/user/ && systemctl --user enable --now openrgb.service
