@@ -1,6 +1,6 @@
 # Bunny Sword script for Fedora KDE 38+
 ```
-git clone https://github.com/Bunnysword/sfk
+sudo dnf in -y git && git clone https://github.com/Bunnysword/sfk && cd sfk/ && chmod 750 sfk.sh && ./sfk.sh
 ```
 
 ##### Repo rpmfusion and copr on
