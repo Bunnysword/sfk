@@ -13,14 +13,14 @@ echo -e "\trm stock apps" && sudo dnf rm mediawriter rhythmbox evince yelp totem
 echo -e "\tcodecs" && sudo dnf in gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 sudo dnf in lame\* --exclude=lame-devel && sudo dnf group upgrade Multimedia --with-optional --allowerasing
 echo -e "\tKernel Fsync" && sudo dnf copr enable sentry/kernel-fsync
-echo -e "\tNoiseTorch" && sudo dnf copr enable principis/NoiseTorch
-echo -e "\tDiscord" && sudo dnf config-manager --add-repo https://terra.fyralabs.com/terra.repo
+echo -e "\tNoiseTorch" && sudo dnf copr enable principis/NoiseTorch && sudo dnf in noisetorch
+# echo -e "\tDiscord" && sudo dnf config-manager --add-repo https://terra.fyralabs.com/terra.repo && sudo dnf in discord
 #Install_Apps
 sudo dnf config-manager --set-enabled google-chrome
-echo -e "\tInstall Apps" && sudo dnf in mangohud timeshift goverlay steam lutris transmission kdenlive vlc htop redhat-lsb-core rocm-opencl inxi neofetch protontricks openssl discord noisetorch easyeffects corectrl gimp google-chrome-stable openrgb piper --allowerasing
+echo -e "\tInstall Apps" && sudo dnf in mangohud timeshift goverlay steam lutris transmission kdenlive vlc htop redhat-lsb-core rocm-opencl inxi neofetch protontricks openssl easyeffects corectrl gimp google-chrome-stable openrgb piper --allowerasing
 sudo dnf update --refresh
 #Flatpak
-echo -e "\tFlatpak" && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub com.heroicgameslauncher.hgl com.obsproject.Studio net.davidotek.pupgui2
+echo -e "\tFlatpak" && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub com.heroicgameslauncher.hgl com.obsproject.Studio net.davidotek.pupgui2 com.discordapp.Discord
 #Disable_Services
 echo -e "\tOFF_Services"
 sudo systemctl mask plymouth-quit-wait.service
