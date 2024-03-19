@@ -3,7 +3,7 @@
 #FOR_KDE_F38+
 #configuration dnf
 echo -e "\tconfiguration dnf" && sudo sh -c "echo -e 'fastestmirror=True\nmax_parallel_downloads=10\ndefaultyes=True\nkeepcache=True' >> /etc/dnf/dnf.conf"
-sudo dnf autoremove && sudo dnf clean all && sudo dnf in dnf-automatic && systemctl enable dnf-automatic.timer
+sudo dnf autoremove -y && sudo dnf clean all && sudo dnf in -y dnf-automatic && systemctl enable dnf-automatic.timer
 #rpmfusion
 echo -e "\trpmfusion" && sudo dnf in -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf in -y rpmfusion-free-appstream-data rpmfusion-nonfree-appstream-data
@@ -12,7 +12,7 @@ echo -e "\trm stock apps" && sudo dnf rm -y mediawriter rhythmbox evince yelp to
 #codecs
 echo -e "\tcodecs" && sudo dnf in -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 sudo dnf in -y lame\* --exclude=lame-devel && sudo dnf group upgrade Multimedia --with-optional --allowerasing
-echo -e "\tKernel Fsync" && sudo dnf copr enable sentry/kernel-fsync && sudo dnf in -y kernel-fsync
+echo -e "\tKernel Fsync" && sudo dnf copr enable sentry/kernel-fsync
 echo -e "\tNoiseTorch" && sudo dnf copr enable principis/NoiseTorch && sudo dnf in -y noisetorch
 # echo -e "\tDiscord" && sudo dnf config-manager --add-repo https://terra.fyralabs.com/terra.repo && sudo dnf in -y discord
 #Install_Apps
