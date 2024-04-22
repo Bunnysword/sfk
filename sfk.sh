@@ -38,3 +38,6 @@ mkdir /home/bunnysword/.config/OpenRGB && cp 1.orp /home/bunnysword/.config/Open
 #mkdir -p /home/bunnysword/.config/systemd/user/ && cp openrgb.service /home/bunnysword/.config/systemd/user/ && systemctl --user enable --now openrgb.service
 #Other
 neofetch && cp config.conf /home/bunnysword/.config/neofetch/ && neofetch
+#steam-presence
+git clone https://github.com/JustTemmie/steam-presence && cd /steam-presence &&
+
