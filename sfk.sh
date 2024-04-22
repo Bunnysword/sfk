@@ -20,7 +20,7 @@ sudo dnf config-manager --set-enabled google-chrome
 echo -e "\tInstall Apps" && sudo dnf in -y mangohud timeshift goverlay steam lutris transmission kdenlive vlc htop redhat-lsb-core rocm-opencl inxi neofetch protontricks openssl easyeffects corectrl gimp google-chrome-stable openrgb piper --allowerasing
 sudo dnf update -y --refresh
 #Flatpak
-echo -e "\tFlatpak" && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub -y com.heroicgameslauncher.hgl com.obsproject.Studio net.davidotek.pupgui2
+echo -e "\tFlatpak" && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub -y com.heroicgameslauncher.hgl com.obsproject.Studio net.davidotek.pupgui2 ru.yandex.Browser
 #Disable_Services
 echo -e "\tOFF_Services"
 sudo systemctl mask plymouth-quit-wait.service
