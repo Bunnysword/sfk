@@ -39,5 +39,5 @@ mkdir /home/bunnysword/.config/OpenRGB && cp 1.orp /home/bunnysword/.config/Open
 #Other
 neofetch && cp config.conf /home/bunnysword/.config/neofetch/ && neofetch
 #steam-presence
-git clone https://github.com/JustTemmie/steam-presence && mv config.json steam-presence/ && cd /steam-presence && ./installer.sh
+git clone https://github.com/JustTemmie/steam-presence && mv config.json steam-presence/ && cd steam-presence/ && ./installer.sh
 
