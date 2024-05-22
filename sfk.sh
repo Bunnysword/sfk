@@ -16,7 +16,8 @@ sudo dnf copr enable -y principis/NoiseTorch && sudo dnf in -y noisetorch #Noise
 sudo dnf config-manager --add-repo https://terra.fyralabs.com/terra.repo && sudo dnf in -y discord #Discord from terra
 #Install_Apps
 sudo dnf config-manager --set-enabled google-chrome
-sudo dnf in -y mangohud timeshift goverlay steam lutris transmission kdenlive vlc htop redhat-lsb-core rocm-opencl inxi neofetch protontricks openssl easyeffects corectrl gimp google-chrome-stable openrgb piper --allowerasing
+sudo dnf in -y mangohud timeshift goverlay steam lutris transmission kdenlive vlc htop redhat-lsb-core rocm-opencl inxi neofetch protontricks openssl easyeffects gimp google-chrome-stable openrgb piper --allowerasing
+#corectrl
 sudo dnf update -y --refresh
 #Flatpak
 echo -e "\tFlatpak" && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub -y com.heroicgameslauncher.hgl com.obsproject.Studio net.davidotek.pupgui2
