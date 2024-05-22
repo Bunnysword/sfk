@@ -12,7 +12,7 @@ echo -e "\trm stock apps" && sudo dnf rm -y mediawriter rhythmbox evince yelp to
 sudo dnf in -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 sudo dnf in -y lame\* --exclude=lame-devel && sudo dnf group upgrade -y Multimedia --with-optional --allowerasing
 sudo dnf copr enable -y sentry/kernel-fsync #fsync
-sudo dnf copr enable -y principis/NoiseTorch && sudo dnf in -y noisetorch && mkdir /home/bunnysword/.config/systemd/ && mkdir /home/bunnysword/.config/systemd/user && mv /services/noisetorch.service /home/bunnysword/.config/systemd/user/ #Noisetorch
+sudo dnf copr enable -y principis/NoiseTorch && sudo dnf in -y noisetorch #Noisetorch
 sudo dnf config-manager --add-repo https://terra.fyralabs.com/terra.repo && sudo dnf in -y discord #Discord from terra
 #Install_Apps
 sudo dnf config-manager --set-enabled google-chrome
@@ -28,7 +28,9 @@ systemctl disable rpcbind.service
 systemctl disable lvm2-monitor.service
 systemctl disable NetworkManager-wait-online.service
 sudo mv /services/wakeup-disable_GPP0.service /etc/systemd/system/ && sudo systemctl enable wakeup-disable_GPP0.service && sudo systemctl start wakeup-disable_GPP0.service #B550 fix
-#other
+mkdir /home/bunnysword/.config/systemd/ && mkdir /home/bunnysword/.config/systemd/user && mv /services/noisetorch.service /home/bunnysword/.config/systemd/user/
+systemctl --user daemon-reload && systemctl --user start noisetorch && systemctl --user enable noisetorch
+#Other
 mkdir /home/bunnysword/.config/OpenRGB && cp /conf/1.orp /home/bunnysword/.config/OpenRGB/ #OpenRGB
 mkdir /home/bunnysword/.config/neofetch && mv /conf/config.conf /home/bunnysword/.config/neofetch/ && neofetch #Neofetch
 mkdir /home/bunnysword/.config/MangoHud && mv /conf/MangoHud.conf /home/bunnysword/.config/MangoHud/ #MangoHud
