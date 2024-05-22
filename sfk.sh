@@ -12,9 +12,9 @@ echo -e "\trm stock apps" && sudo dnf rm -y mediawriter rhythmbox evince yelp to
 #codecs
 echo -e "\tcodecs" && sudo dnf in -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 sudo dnf in -y lame\* --exclude=lame-devel && sudo dnf group upgrade -y Multimedia --with-optional --allowerasing
-echo -e "\tKernel Fsync" && sudo dnf copr enable -y sentry/kernel-fsync
-echo -e "\tNoiseTorch" && sudo dnf copr enable -y principis/NoiseTorch && sudo dnf in -y noisetorch
-echo -e "\tDiscord" && sudo dnf config-manager --add-repo https://terra.fyralabs.com/terra.repo && sudo dnf in -y discord
+sudo dnf copr enable -y sentry/kernel-fsync #fsync
+sudo dnf copr enable -y principis/NoiseTorch && sudo dnf in -y noisetorch && mkdir /home/bunnysword/.config/systemd/ && mkdir /home/bunnysword/.config/systemd/user && cp noisetorch.service /home/bunnysword/.config/systemd/user/ #Noisetorch
+sudo dnf config-manager --add-repo https://terra.fyralabs.com/terra.repo && sudo dnf in -y discord #discord from terra
 #Install_Apps
 sudo dnf config-manager --set-enabled google-chrome
 echo -e "\tInstall Apps" && sudo dnf in -y mangohud timeshift goverlay steam lutris transmission kdenlive vlc htop redhat-lsb-core rocm-opencl inxi neofetch protontricks openssl easyeffects corectrl gimp google-chrome-stable openrgb piper --allowerasing
@@ -33,11 +33,11 @@ systemctl disable NetworkManager-wait-online.service
 echo -e "Fix Suspend for Gigabyte Aorus Elite v2 B550" && sudo cp wakeup-disable_GPP0.service /etc/systemd/system/ && sudo systemctl enable wakeup-disable_GPP0.service && sudo systemctl start wakeup-disable_GPP0.service
 #corectrl
 sudo cp 90-corectrl.rules /etc/polkit-1/rules.d/
-#Fix_rgb_logitech_g213
+#Fix_rgb_logitech
 mkdir /home/bunnysword/.config/OpenRGB && cp 1.orp /home/bunnysword/.config/OpenRGB/
-#mkdir -p /home/bunnysword/.config/systemd/user/ && cp openrgb.service /home/bunnysword/.config/systemd/user/ && systemctl --user enable --now openrgb.service
 #Other
 neofetch && cp config.conf /home/bunnysword/.config/neofetch/ && neofetch
 #steam-presence
-git clone https://github.com/JustTemmie/steam-presence && mv config.json steam-presence/ && cd steam-presence/ && ./installer.sh
-
+git clone https://github.com/JustTemmie/steam-presence && mv config.json steam-presence/ && cd steam-presence/ && ./installer.sh && cd ..
+#NVIDIAMOMENTO
+cd nvdriver/ && chmod 750 nvdriver.sh && ./nvdriver.sh && inxi -G
