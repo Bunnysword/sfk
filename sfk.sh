@@ -28,13 +28,11 @@ systemctl disable livesys.service
 systemctl disable rpcbind.service
 systemctl disable lvm2-monitor.service
 systemctl disable NetworkManager-wait-online.service
+#Other
 sudo mv /services/wakeup-disable_GPP0.service /etc/systemd/system/ && sudo systemctl enable wakeup-disable_GPP0.service && sudo systemctl start wakeup-disable_GPP0.service #B550 fix
-#corectrl
 sudo mv 90-corectrl.rules /etc/polkit-1/rules.d/
-#Fix_rgb_logitech
 mkdir /home/bunnysword/.config/OpenRGB && cp 1.orp /home/bunnysword/.config/OpenRGB/
 mkdir /home/bunnysword/.config/neofetch && mv config.conf /home/bunnysword/.config/neofetch/ && neofetch
-#steam-presence
 git clone https://github.com/JustTemmie/steam-presence && mv config.json steam-presence/ && cd steam-presence/ && ./installer.sh && cd ..
 #NVIDIAMOMENTO
 cd nvdriver/ && chmod 750 nvdriver.sh && ./nvdriver.sh && inxi -G
