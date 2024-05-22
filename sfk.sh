@@ -9,7 +9,6 @@ sudo dnf in -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-
 sudo dnf in -y rpmfusion-free-appstream-data rpmfusion-nonfree-appstream-data
 #rm_stok_apps
 echo -e "\trm stock apps" && sudo dnf rm -y mediawriter rhythmbox evince yelp totem firefox libreoffice* power-profiles-daemon kolourpaint kmahjongg kmines akregator kmail* konversation ktnef pimdataexporter sieveeditor dragon elisa kamoso kaddressbook kontact korganizer kpat
-#
 sudo dnf in -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 sudo dnf in -y lame\* --exclude=lame-devel && sudo dnf group upgrade -y Multimedia --with-optional --allowerasing
 sudo dnf copr enable -y sentry/kernel-fsync #fsync
@@ -28,11 +27,14 @@ systemctl disable livesys.service
 systemctl disable rpcbind.service
 systemctl disable lvm2-monitor.service
 systemctl disable NetworkManager-wait-online.service
-#Other
 sudo mv /services/wakeup-disable_GPP0.service /etc/systemd/system/ && sudo systemctl enable wakeup-disable_GPP0.service && sudo systemctl start wakeup-disable_GPP0.service #B550 fix
-sudo mv 90-corectrl.rules /etc/polkit-1/rules.d/
-mkdir /home/bunnysword/.config/OpenRGB && cp 1.orp /home/bunnysword/.config/OpenRGB/
-mkdir /home/bunnysword/.config/neofetch && mv config.conf /home/bunnysword/.config/neofetch/ && neofetch
-git clone https://github.com/JustTemmie/steam-presence && mv config.json steam-presence/ && cd steam-presence/ && ./installer.sh && cd ..
+#other
+mkdir /home/bunnysword/.config/OpenRGB && cp /conf/1.orp /home/bunnysword/.config/OpenRGB/ #OpenRGB
+mkdir /home/bunnysword/.config/neofetch && mv /conf/config.conf /home/bunnysword/.config/neofetch/ && neofetch #Neofetch
+mkdir /home/bunnysword/.config/MangoHud && mv /conf/MangoHud.conf /home/bunnysword/.config/MangoHud/ #MangoHud
+git clone https://github.com/JustTemmie/steam-presence && mv /conf/config.json steam-presence/ && cd steam-presence/ && ./installer.sh && cd ..
 #NVIDIAMOMENTO
 cd nvdriver/ && chmod 750 nvdriver.sh && ./nvdriver.sh && inxi -G
+####sudo grubby --args="gpu_sched.sched_policy=0" --update-kernel=ALL for amd wayland fix
+####sudo mv /conf/90-corectrl.rules /etc/polkit-1/rules.d/ #Corectrl rules for amd
+####sudo mv /conf/environment /etc && sudo dmesg | grep BAR= #BAR for amd
