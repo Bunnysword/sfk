@@ -29,15 +29,15 @@ systemctl disable rpcbind.service
 systemctl disable lvm2-monitor.service
 systemctl disable NetworkManager-wait-online.service
 sudo mv /services/wakeup-disable_GPP0.service /etc/systemd/system/ && sudo systemctl enable wakeup-disable_GPP0.service && sudo systemctl start wakeup-disable_GPP0.service #B550 fix
-mkdir /home/bunnysword/.config/systemd/ && mkdir /home/bunnysword/.config/systemd/user && mv /services/noisetorch.service /home/bunnysword/.config/systemd/user/
+mkdir /home/bunnysword/.config/systemd/ && mkdir /home/bunnysword/.config/systemd/user && mv services/noisetorch.service /home/bunnysword/.config/systemd/user/
 systemctl --user daemon-reload && systemctl --user start noisetorch && systemctl --user enable noisetorch
 #Other
-mkdir /home/bunnysword/.config/OpenRGB && cp /conf/1.orp /home/bunnysword/.config/OpenRGB/ #OpenRGB
-mkdir /home/bunnysword/.config/neofetch && mv /conf/config.conf /home/bunnysword/.config/neofetch/ && neofetch #Neofetch
-mkdir /home/bunnysword/.config/MangoHud && mv /conf/MangoHud.conf /home/bunnysword/.config/MangoHud/ #MangoHud
-git clone https://github.com/JustTemmie/steam-presence && mv /conf/config.json steam-presence/ && cd steam-presence/ && ./installer.sh && cd ..
+mkdir /home/bunnysword/.config/OpenRGB && cp conf/1.orp /home/bunnysword/.config/OpenRGB/ #OpenRGB
+mkdir /home/bunnysword/.config/neofetch && mv conf/config.conf /home/bunnysword/.config/neofetch/ && neofetch #Neofetch
+mkdir /home/bunnysword/.config/MangoHud && mv conf/MangoHud.conf /home/bunnysword/.config/MangoHud/ #MangoHud
+git clone https://github.com/JustTemmie/steam-presence && mv conf/config.json steam-presence/ && cd steam-presence/ && ./installer.sh && cd ..
 #NVIDIAMOMENTO
 cd nvdriver/ && chmod 750 nvdriver.sh && ./nvdriver.sh && inxi -G
 ####sudo grubby --args="gpu_sched.sched_policy=0" --update-kernel=ALL for amd wayland fix
-####sudo mv /conf/90-corectrl.rules /etc/polkit-1/rules.d/ #Corectrl rules for amd
-####sudo mv /conf/environment /etc && sudo dmesg | grep BAR= #BAR for amd
+####sudo mv conf/90-corectrl.rules /etc/polkit-1/rules.d/ #Corectrl rules for amd
+####sudo mv conf/environment /etc && sudo dmesg | grep BAR= #BAR for amd
