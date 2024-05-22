@@ -14,23 +14,21 @@ sudo dnf in -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh2
 sudo dnf in -y lame\* --exclude=lame-devel && sudo dnf group upgrade -y Multimedia --with-optional --allowerasing
 sudo dnf copr enable -y sentry/kernel-fsync #fsync
 sudo dnf copr enable -y principis/NoiseTorch && sudo dnf in -y noisetorch && mkdir /home/bunnysword/.config/systemd/ && mkdir /home/bunnysword/.config/systemd/user && cp noisetorch.service /home/bunnysword/.config/systemd/user/ #Noisetorch
-sudo dnf config-manager --add-repo https://terra.fyralabs.com/terra.repo && sudo dnf in -y discord #discord from terra
+sudo dnf config-manager --add-repo https://terra.fyralabs.com/terra.repo && sudo dnf in -y discord #Discord from terra
 #Install_Apps
 sudo dnf config-manager --set-enabled google-chrome
-echo -e "\tInstall Apps" && sudo dnf in -y mangohud timeshift goverlay steam lutris transmission kdenlive vlc htop redhat-lsb-core rocm-opencl inxi neofetch protontricks openssl easyeffects corectrl gimp google-chrome-stable openrgb piper --allowerasing
+sudo dnf in -y mangohud timeshift goverlay steam lutris transmission kdenlive vlc htop redhat-lsb-core rocm-opencl inxi neofetch protontricks openssl easyeffects corectrl gimp google-chrome-stable openrgb piper --allowerasing
 sudo dnf update -y --refresh
 #Flatpak
 echo -e "\tFlatpak" && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub -y com.heroicgameslauncher.hgl com.obsproject.Studio net.davidotek.pupgui2
 #Disable_Services
-echo -e "\tOFF_Services"
 sudo systemctl mask plymouth-quit-wait.service
 systemctl disable livesys-late.service
 systemctl disable livesys.service
 systemctl disable rpcbind.service
 systemctl disable lvm2-monitor.service
 systemctl disable NetworkManager-wait-online.service
-#Fix_Suspend_for_Gigabyte_Aorus_Elite_v2_B550
-echo -e "Fix Suspend for Gigabyte Aorus Elite v2 B550" && sudo cp wakeup-disable_GPP0.service /etc/systemd/system/ && sudo systemctl enable wakeup-disable_GPP0.service && sudo systemctl start wakeup-disable_GPP0.service
+sudo cp wakeup-disable_GPP0.service /etc/systemd/system/ && sudo systemctl enable wakeup-disable_GPP0.service && sudo systemctl start wakeup-disable_GPP0.service #B550 fix
 #corectrl
 sudo cp 90-corectrl.rules /etc/polkit-1/rules.d/
 #Fix_rgb_logitech
