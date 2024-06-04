@@ -11,7 +11,6 @@ sudo dnf in -y rpmfusion-free-appstream-data rpmfusion-nonfree-appstream-data
 echo -e "\trm stock apps" && sudo dnf rm -y mediawriter rhythmbox evince yelp totem firefox libreoffice* power-profiles-daemon kolourpaint kmahjongg kmines akregator kmail* konversation ktnef pimdataexporter sieveeditor dragon elisa kamoso kaddressbook kontact korganizer kpat
 sudo dnf in -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 sudo dnf in -y lame\* --exclude=lame-devel && sudo dnf group upgrade -y Multimedia --with-optional --allowerasing
-sudo dnf copr enable -y sentry/kernel-fsync #fsync
 sudo dnf copr enable -y principis/NoiseTorch && sudo dnf in -y noisetorch #Noisetorch
 sudo dnf config-manager --add-repo https://terra.fyralabs.com/terra.repo && sudo dnf in -y discord #Discord from terra
 #Install_Apps
@@ -41,3 +40,4 @@ cd nvdriver/ && chmod 750 nvdriver.sh && ./nvdriver.sh && inxi -G
 ####sudo grubby --args="gpu_sched.sched_policy=0" --update-kernel=ALL for amd wayland fix
 ####sudo mv conf/90-corectrl.rules /etc/polkit-1/rules.d/ #Corectrl rules for amd
 ####sudo mv conf/environment /etc && sudo dmesg | grep BAR= #BAR for amd
+####sudo dnf copr enable -y sentry/kernel-fsync #fsync
